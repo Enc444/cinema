@@ -20,7 +20,7 @@ for(int row = 1; row <= 6; row++)
         hall1.Seats.Add(new Seat(row, number, zone));
     }
 }
-Console.WriteLine(hall1.Seats.Count);
+
 
 var film1 = new Film("Інтерстеллар", "Фантастика", 169, "Подорож крізь червоточину");
 var film2 = new Film("Гладіатор", "Історичний", 155, "Римський воїн мститься імператору");
@@ -41,3 +41,11 @@ foreach (var s in schedule)
     var end = s.Start.AddMinutes(s.Film.DurationMinutes);
     Console.WriteLine($"{s.Film.Title} ({s.Film.Genre}) {s.Start:dd.MM HH:mm} - {end:HH:mm}, {s.Hall.Name}");
 }
+
+var office = new BoxOffice();
+
+var ticket = office.BuyTicket(session1, hall1.Seats[0]);
+Console.WriteLine(ticket != null ? $"Куплено, ціна {ticket.Price}" : "Місце зайняте");
+
+var again = office.BuyTicket(session1, hall1.Seats[0]);
+Console.WriteLine(again != null ? "Куплено" : "Місце зайняте");
