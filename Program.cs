@@ -21,3 +21,23 @@ for(int row = 1; row <= 6; row++)
     }
 }
 Console.WriteLine(hall1.Seats.Count);
+
+var film1 = new Film("Інтерстеллар", "Фантастика", 169, "Подорож крізь червоточину");
+var film2 = new Film("Гладіатор", "Історичний", 155, "Римський воїн мститься імператору");
+var film3 = new Film("Шрек", "Мультфільм", 90, "Огр рятує принцесу");
+
+var session1 = new Session(film1, hall1, new DateTime(2026, 11, 15, 12, 0, 0));
+var session2 = new Session(film2, hall1, new DateTime(2026, 11, 15, 15, 30, 0));
+var session3 = new Session(film3, hall1, new DateTime(2026, 11, 15, 18, 30, 0));
+var session4 = new Session(film1, hall1, new DateTime(2026, 11, 16, 14, 0, 0));
+var session5 = new Session(film2, hall1, new DateTime(2026, 11, 16, 19, 0, 0));
+
+var sessions = new List<Session> { session1, session2, session3, session4, session5};
+
+var schedule = sessions.OrderBy(s => s.Start);
+
+foreach (var s in schedule)
+{
+    var end = s.Start.AddMinutes(s.Film.DurationMinutes);
+    Console.WriteLine($"{s.Film.Title} ({s.Film.Genre}) {s.Start:dd.MM HH:mm} - {end:HH:mm}, {s.Hall.Name}");
+}
