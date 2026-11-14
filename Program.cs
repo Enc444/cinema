@@ -59,4 +59,6 @@ Console.WriteLine(groupTickets != null ? $"Куплено {groupTickets.Count} �
 var conflict = office.BuyTickets(session1, new List<Seat> { hall1.Seats[3], hall1.Seats[4] });
 Console.WriteLine(conflict != null ? "Куплено" : "Хтось із місць зайнятий");
     
+    Console.WriteLine($"Вільних місць: {office.GetFreeSeats(session1).Count}");
+Console.WriteLine($"Вільних місць на інший сеанс: {office.GetFreeSeats(session2).Count}");
 

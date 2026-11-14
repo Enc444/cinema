@@ -28,4 +28,9 @@ public class BoxOffice
         }
         return tickets;
     }
+
+    public List<Seat> GetFreeSeats(Session session)
+    {
+        return session.Hall.Seats.Where(seat => !session.TakenSeats.Contains(seat)).ToList();
+    }
 }
