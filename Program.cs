@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 var parter = new Zone("Партер", 100m);
 var middle = new Zone("Середина", 150m);
@@ -49,3 +50,13 @@ Console.WriteLine(ticket != null ? $"Куплено, ціна {ticket.Price}" : 
 
 var again = office.BuyTicket(session1, hall1.Seats[0]);
 Console.WriteLine(again != null ? "Куплено" : "Місце зайняте");
+
+
+var groupSeats = new List<Seat> { hall1.Seats[1], hall1.Seats[2], hall1.Seats[3] };
+var groupTickets = office.BuyTickets(session1, groupSeats);
+Console.WriteLine(groupTickets != null ? $"Куплено {groupTickets.Count} квитків на {groupTickets.Sum(t => t.Price)} грн" : "Хтось із місць зайнятий");
+
+var conflict = office.BuyTickets(session1, new List<Seat> { hall1.Seats[3], hall1.Seats[4] });
+Console.WriteLine(conflict != null ? "Куплено" : "Хтось із місць зайнятий");
+    
+
