@@ -62,3 +62,38 @@ Console.WriteLine(conflict != null ? "Куплено" : "Хтось із міс�
     Console.WriteLine($"Вільних місць: {office.GetFreeSeats(session1).Count}");
 Console.WriteLine($"Вільних місць на інший сеанс: {office.GetFreeSeats(session2).Count}");
 
+var filmByTitle = new Dictionary<string, Film>();
+filmByTitle["Шрек"] = film3; 
+filmByTitle["Інтерстеллар"] = film1;
+filmByTitle["Гладіатор"] = film2;
+Console.WriteLine(filmByTitle["Шрек"].DurationMinutes);
+
+
+if(filmByTitle.TryGetValue("Матриця", out Film? found))
+{
+    Console.WriteLine(found.DurationMinutes);
+
+}
+else
+{
+    Console.WriteLine("Фільм не знайдено");
+}
+
+if(filmByTitle.TryGetValue("Гладіатор", out Film? found2))
+{
+    Console.WriteLine($"{found2.DurationMinutes} хвилин, Жанр: {found2.Genre}");
+
+}
+else
+{
+    Console.WriteLine("Фільм не знайдено");
+}
+
+if(int.TryParse(Console.ReadLine(), out int choice))
+{
+    Console.WriteLine($"Ти вибрав число {choice}");
+}
+else
+{
+    Console.WriteLine("Введено не число");
+}
